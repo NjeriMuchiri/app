@@ -3,8 +3,9 @@ from flask import render_template
 
 
 @app.route('/')
+@app.route('/home')
 def index():
-    return 'Hello Kashee'
+    return render_template('public/index.html')
 
 @app.route('/about')
 def about():
