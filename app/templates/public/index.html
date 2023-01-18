@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <meta http-equiv="X-UA-compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-        <title>Home Page</title>
-    </head>
-<body>
-     <h1 style="color: #ffa812">Index</h1>
-     <p>This is the index</p>
-     <img style='max-width:200px;' src="{{url_for('static', filename='img/leave.jpg')}}"alt="banner"  />
-        <script src="{{url_for('static', filename='js/app.js')}}"></script>
-</body>
-</html>
+{% extends 'public/templates/public_template.html' %}
+{% block title%}Home Page{%endblock%}
+
+{%block main%}
+  <h1 style='color:#648c11'>Our homepage</h1>
+  <p>Welcome to our store</p>
+  <img style='max-width:200px;' src="{{url_for('static', filename='img/leave.jpg')}}"alt="banner"  />
+  
+{%endblock%}
