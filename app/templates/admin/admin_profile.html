@@ -1,0 +1,9 @@
+{% extends 'admin/templates/admin_templates.html' %}
+{% block title%}Admin's Profile{%endblock%}
+
+{%block main%}
+  <h1 style='color:#648c11'>Profile of our admin</h1>
+  <p>The Admin station</p>
+  <img style='max-width:200px;' src="{{url_for('static', filename='img/libv.jpg')}}"alt="banner"  />
+  
+{%endblock%}

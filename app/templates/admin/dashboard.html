@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <meta http-equiv="X-UA-compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-        <title>Dashboard</title>
-    </head>
-<body>
-     <h1  style="color: #ffa812">Dashie</h1>
-     <p>This is the dashboard</p>
-     <script src="{{url_for('static', filename='js/app.js')}}"></script>
+{% extends 'admin/templates/admin_templates.html' %}
+{% block title%}Our Admin{%endblock%}
 
-</body>
-</html>
+{%block main%}
+  <h1 style='color:#648c11'>Admin Tings</h1>
+  <p>Welcome to our store</p>
+  <img style='max-width:200px;' src="{{url_for('static', filename='img/logo.png')}}"alt="banner"  />
+  
+{%endblock%}
