@@ -9,7 +9,8 @@ def index_page():
 
 @app.route('/jinja')
 def jinja():
-    return render_template('public/jinja.html')
+    my_name = "Kashee"
+    return render_template('public/jinja.html', my_name=my_name)
 
 @app.route('/about')
 def about_page():
