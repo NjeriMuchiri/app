@@ -18,12 +18,65 @@
         <li>{{lang}}</li>
         {%endfor%}
     </ul>
+    <hr>
+
     <h1>Looping with Index</h1>
     <ul>
         {%for lang in langs%}
-        <li>{{loop.index}}: {{lang}}</li>
+        <li>{{loop.index0}}: {{lang}}</li>
         {%endfor%}
     </ul>
+    <hr>
+
+    <h1>Looping the dict</h1>
+    <ul>
+        {% for k, v in friends.items() %}
+        <li>{{k}}: {{v}}</li>
+        {%endfor%}
+    </ul>
+    <hr>
+
+    <h1>Looping the dict Keys</h1>
+    <ul>
+        {% for k in friends.keys() %}
+        <li>{{k}}</li>
+        {%endfor%}
+    </ul>
+    <hr>
+    <h1>Accessing List members</h1>
+      <p>{{langs[0]}}</p>
+    <hr>
+    <h1>Accessing Dict members</h1>
+      <p>{{friends["Ken"]}}</p>
+    <hr>
+    <h1>Accessing class members</h1>
+      <p>{{gitRemote.name}}</p>
+    <hr>
+    <h1>Unpacking Variables</h1>
+    {% set a,b = colours %}
+      <p>{{a}}</p>
+      <p>{{b}}</p>
+    <hr>
+      <h1>calling a function</h1>
+      <p>{{repeat("Flask is Awesome  ", 10) }}</p>
+    <hr>
+    <h1>Calling a class method</h1>
+      <p>{{gitRemote.clone()}}</p>
+    <hr>
+    <h1>conditions</h1>
+    {% if cool %}
+      <p>You are {{cool}}</p>
+      {%endif%}
+    <hr>
+    <h1>Comparisons</h1>
+    {% if age < 18 %}
+      <p>No entry</p>
+    {% elif age < 26 %}
+      <p>Nearly Old enough</p>
+    {%else%}
+      <p>You may enter</p>
+    {% endif%}
+    <hr>
     </div> 
     </div>
 </div>

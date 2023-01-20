@@ -16,7 +16,7 @@ def jinja():
         'Kaggy': 20,
         'Kawambo': 30,
         'kashii': 27,
-        'Ken': 27, 
+        'Ken': 26, 
     }
     colours = ('Brown', 'Gray')
     
@@ -41,7 +41,7 @@ def jinja():
     
         
     return render_template('public/jinja.html',
-                           my_name=my_name,age=age,langs=langs,colours=colours,cool=cool,GitRepos=GitRepos,gitRemote=gitRemote,repeat=repeat)
+                           my_name=my_name,age=age,langs=langs,friends=friends,colours=colours,cool=cool,GitRepos=GitRepos,gitRemote=gitRemote,repeat=repeat)
 
 @app.route('/about')
 def about_page():
