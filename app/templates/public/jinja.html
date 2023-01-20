@@ -11,7 +11,12 @@
 
     <h1>MyVariables</h1>
     <hr>
-    <p>{{my_name}}</p>
+    <p>Name: {{my_name}}</p>
+    <ul>
+        {%for lang in langs%}
+        <li>{{lang}}</li>
+        {%endfor%}
+    </ul>
     </div> 
     </div>
 </div>
