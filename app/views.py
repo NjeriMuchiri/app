@@ -58,3 +58,7 @@ def signup_page():
         print(username,email,password)
         return redirect(request.url)        
     return render_template('public/signup.html')
+
+@app.route("/profile")
+def profile():
+    return render_template('/public/profile.html')
