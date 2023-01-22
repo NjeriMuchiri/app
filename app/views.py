@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request, redirect
 
 
 @app.route('/')
@@ -47,6 +47,11 @@ def jinja():
 def about_page():
     return render_template('public/about.html')
 
-@app.route('/sign-up')
+@app.route('/signup',methods=["GET","POST"])
 def signup_page():
+    
+    if request.method == "POST":
+        req = request.form
+        print(req)
+    return redirect(request.url)        
     return render_template('public/signup.html')
