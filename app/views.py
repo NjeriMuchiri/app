@@ -52,6 +52,9 @@ def signup_page():
     
     if request.method == "POST":
         req = request.form
-        print(req)
-    return redirect(request.url)        
+        username = req["username"]
+        email = req.get("email")
+        password = request.form["password"]
+        print(username,email,password)
+        return redirect(request.url)        
     return render_template('public/signup.html')
