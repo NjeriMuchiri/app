@@ -59,6 +59,25 @@ def signup_page():
         return redirect(request.url)        
     return render_template('public/signup.html')
 
-@app.route("/profile")
-def profile():
+users = {
+    "waithira":{
+        "name":"Catherine Wanjiru",
+        "bio": "Gifted witha green thumb",
+        "occupation":"@farmer"
+    },
+    "njerina":{
+        "name":"Njeri Muchiri",
+        "bio":"Gifted with many skills",
+        "occupation":"SoftwareEngineer"
+    },
+    "muchiri":{
+        "name":"Muchiri Gichuki",
+        "bio":"Gemstone investor",
+        "occupation":"business enterpreneur"
+    }
+}
+
+@app.route("/profile/<username>")
+def profile(username):
+    print(username)
     return render_template('/public/profile.html')
