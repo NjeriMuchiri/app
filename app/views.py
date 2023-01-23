@@ -106,3 +106,11 @@ def jsoning():
         res = make_response(jsonify({"message": "No JSON received"}), 400)
         
         return res
+    
+@app.route('/guestbook')
+def guestbook():
+    return render_template('public/guestbook.html')
+
+@app.route('/guestbook/create-entry')
+def create_entry():
+    return 'Thanks!'
