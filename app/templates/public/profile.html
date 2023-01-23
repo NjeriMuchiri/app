@@ -8,6 +8,15 @@
         <div class="col">
       <h1 style="color:#e3f988">Profile</h1>
       <hr>
+      <div class="card">
+        <div class="card-body">
+          <h4>{{ username }}</h4>
+          <hr>
+          <p><strong>{{user["name"]}}</strong></p>
+          <p class="text-muted">{{user["bio"] | title}}</p>
+          <p><em>{{user["occupation"] | title}}</em></p>
+        </div>
+      </div>
         </div>
     </div>
 </div>

@@ -62,13 +62,13 @@ def signup_page():
 users = {
     "waithira":{
         "name":"Catherine Wanjiru",
-        "bio": "Gifted witha green thumb",
-        "occupation":"@farmer"
+        "bio": "Gifted with a green thumb",
+        "occupation":"farmer"
     },
     "njerina":{
         "name":"Njeri Muchiri",
         "bio":"Gifted with many skills",
-        "occupation":"SoftwareEngineer"
+        "occupation":"Software Engineer"
     },
     "muchiri":{
         "name":"Muchiri Gichuki",
@@ -79,5 +79,10 @@ users = {
 
 @app.route("/profile/<username>")
 def profile(username):
-    print(username)
-    return render_template('/public/profile.html')
+    
+    user = None
+    
+    if username in users:
+        user = users[username]
+        
+    return render_template('/public/profile.html', username=username, user=user)
