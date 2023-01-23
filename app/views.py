@@ -86,3 +86,7 @@ def profile(username):
         user = users[username]
         
     return render_template('/public/profile.html', username=username, user=user)
+
+@app.route('/multiple/<foo>/<bar>/<baz>')
+def multiple(foo,bar,baz):
+    return f"foo is {foo}, bar is {bar}, baz is {baz}"
