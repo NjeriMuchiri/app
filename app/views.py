@@ -118,3 +118,13 @@ def create_entry():
     print(req)
     res = make_response(jsonify(req), 200)
     return res
+
+@app.route('/query')
+def query_ting():
+    
+    args = request.args
+    
+    for k,v in args.items():
+        print(f"{k}: {v}")
+    return "Query Received", 200
+
