@@ -121,10 +121,12 @@ def create_entry():
 
 @app.route('/query')
 def query_ting():
-    
-    args = request.args
-    
-    for k,v in args.items():
-        print(f"{k}: {v}")
-    return "Query Received", 200
+    if request.args:
+        
+        args = request.args
+        serialized = ", ".join(f"{k}: {v}" for k, v in args.items())
+       
+        return f"(Query) {serialized}", 200
+    else:
+        return "No query received", 200
 
