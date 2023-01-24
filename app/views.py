@@ -113,4 +113,8 @@ def guestbook():
 
 @app.route('/guestbook/create-entry')
 def create_entry():
-    return 'Thanks!'
+    
+    req = request.get_json()
+    print(req)
+    res = make_response(jsonify(req), 200)
+    return res
