@@ -136,6 +136,7 @@ def query_ting():
     
 app.config['IMAGE_UPLOADS'] = '/home/muchirinjeri/app/app/static/img/uploads'
 app.config['ALLOWED_IMAGE_EXTENSIONS'] = ["PNG", "JPG","JPEG", "GIF"]
+app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 *1024
 
 def allowed_image(filename):
     if not '.' in filename:
@@ -147,21 +148,37 @@ def allowed_image(filename):
         return True
     else:
         return False
-    
+
+def allowed_image_filesize(filesize):
+    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
+        return True
+    else:
+        return False
+
 @app.route('/upload-image',methods=["GET", "POST"])
 def upload_image():
     if request.method == "POST":
         
         if request.files:
+            
+            if request.files:
+                if not allowed_image_filesize(request.cookies.get('filesize')):
+                  print("file exceeds the maximum size ")
+                  return redirect(request.url)
+                    
+            
             image = request.files['image']
-            if image.filename == '':
-                print("Image mmust have a filename")
+            
+            if image.filename == ' ':
+                print("Image must have a filename")
                 return redirect(request.url)
+            
             if not allowed_image(image.filename):
                 print("That image extension is not allowed")
                 return redirect(request.url)
-                
-            image.save(os.path.join(app.config['IMAGE_UPLOADS'], image.filename))
+            else:
+                filename = secure_filename(image.filename)    
+                image.save(os.path.join(app.config['IMAGE_UPLOADS'], filename))
             print('image saved')
             return redirect(request.url)
         
