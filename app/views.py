@@ -130,4 +130,8 @@ def query_ting():
         return f"(Query) {serialized}", 200
     else:
         return "No query received", 200
+    
+@app.route('/upload-image')
+def upload_image():
+    return render_template("public/upload_image.html")
 
