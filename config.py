@@ -22,7 +22,7 @@ class DevelopmentConfig(Config):
     BD_USERNAME = "root"
     DB_PASSWORD = "example"
     
-    UPLOADS = "/home/muchirinjeri/projects/flask-test/app/app/static/images/uploads"
+    UPLOADS = "/home/muchirinjeri/app/app/static/img/uploads"
     
     SESSION_COOKIE_SECURE = False
     
@@ -33,7 +33,7 @@ class TestingConfig(Config):
     BD_USERNAME = "root"
     DB_PASSWORD = "example"
     
-    UPLOADS = "/home/muchirinjeri/projects/flask-test/app/app/static/images/uploads"
+    UPLOADS = "/home/muchirinjeri/app/app/static/img/uploads"
     
     SESSION_COOKIE_SECURE = False
     

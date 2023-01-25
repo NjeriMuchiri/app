@@ -1,5 +1,8 @@
 from app import app
 from flask import render_template, request, redirect, jsonify, make_response
+import os
+from werkzeug.utils import secure_filename
+
 
 
 @app.route('/')
@@ -131,7 +134,36 @@ def query_ting():
     else:
         return "No query received", 200
     
+app.config['IMAGE_UPLOADS'] = '/home/muchirinjeri/app/app/static/img/uploads'
+app.config['ALLOWED_IMAGE_EXTENSIONS'] = ["PNG", "JPG","JPEG", "GIF"]
+
+def allowed_image(filename):
+    if not '.' in filename:
+        return False
+    
+    ext = filename.rsplit('.', 1)[1]
+    
+    if ext.upper() in app.config['ALLOWED_IMAGE_EXTENSIONS']:
+        return True
+    else:
+        return False
+    
 @app.route('/upload-image',methods=["GET", "POST"])
 def upload_image():
+    if request.method == "POST":
+        
+        if request.files:
+            image = request.files['image']
+            if image.filename == '':
+                print("Image mmust have a filename")
+                return redirect(request.url)
+            if not allowed_image(image.filename):
+                print("That image extension is not allowed")
+                return redirect(request.url)
+                
+            image.save(os.path.join(app.config['IMAGE_UPLOADS'], image.filename))
+            print('image saved')
+            return redirect(request.url)
+        
     return render_template("public/upload_image.html")
 
