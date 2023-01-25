@@ -5,7 +5,7 @@ from flask import render_template, request, redirect, jsonify, make_response
 @app.route('/')
 @app.route('/home')
 def index_page():
-    print(app.config["DB_NAME"])
+    print(f'Flask_ENV_is_set_to: {app.config["ENV"]}')
     return render_template('public/index.html')
 
 @app.route('/jinja')
