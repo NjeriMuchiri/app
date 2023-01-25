@@ -5,8 +5,7 @@ from flask import render_template, request, redirect, jsonify, make_response
 @app.route('/')
 @app.route('/home')
 def index_page():
-    app.config["SECRET_KEY"] = 'gryt3#*^dejkskj'
-    print(app.config["SECRET_KEY"])
+   
     return render_template('public/index.html')
 
 @app.route('/jinja')
