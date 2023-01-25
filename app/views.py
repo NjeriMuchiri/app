@@ -131,7 +131,7 @@ def query_ting():
     else:
         return "No query received", 200
     
-@app.route('/upload-image')
+@app.route('/upload-image',methods=["GET", "POST"])
 def upload_image():
     return render_template("public/upload_image.html")
 

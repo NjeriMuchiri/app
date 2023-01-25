@@ -1,0 +1,16 @@
+{% extends 'public/templates/public_template.html' %}
+{% block title%}Uploads Page{%endblock%}
+
+{%block main%}
+  <h1 style='color:#648c11'>Our upload page</h1>
+  <hr>
+  <form action="/upload-image" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Select Image</label>
+        <div class="custom-file" class="custom-file-input" name="image" id="image">
+            <label class="custom-file-label" for="image">Select image... </label>
+        </div>
+    </div>
+
+  </form>
+{%endblock%}
