@@ -191,6 +191,8 @@ from flask import send_from_directory, abort
 app.config['CLIENT_IMAGES'] = '/home/muchirinjeri/app/app/static/client/img'
 app.config['CLIENT_CSV'] = '/home/muchirinjeri/app/app/static/client/csv'
 app.config['CLIENT_REPORTS'] = '/home/muchirinjeri/app/app/static/client/reports'
+app.config['CLIENT_PDFS'] = '/home/muchirinjeri/app/app/static/client/pdf'
+
 
 
 @app.route('/get-image/<image_name>')
@@ -215,7 +217,17 @@ def get_csv(filename):
 def get_reports(path):
     
     try:
-        return send_from_directory(app.config['CLIENT_REPORTS'], filename=path, as_attachment=True)
+        return send_from_directory(app.config['CLIENT_REPORTS'], path=path, as_attachment=True)
+        
+    except FileNotFoundError:
+        abort(404)
+
+
+@app.route('/get-pdf/<document_name>')
+def get_document(document_name):
+    
+    try:
+        return send_from_directory(app.config['CLIENT_PDFS'], path=document_name, as_attachment=False)
         
     except FileNotFoundError:
         abort(404)
