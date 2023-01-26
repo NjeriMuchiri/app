@@ -211,11 +211,11 @@ def get_csv(filename):
     except FileNotFoundError:
         abort(404)
 
-@app.route('/get-report/<filename>')
-def get_reports(filename):
+@app.route('/get-report/<path:path>')
+def get_reports(path):
     
     try:
-        return send_from_directory(app.config['CLIENT_REPORTS'], path=filename, as_attachment=True)
+        return send_from_directory(app.config['CLIENT_REPORTS'], filename=path, as_attachment=True)
         
     except FileNotFoundError:
         abort(404)
