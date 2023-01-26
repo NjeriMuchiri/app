@@ -189,12 +189,33 @@ def upload_image():
 from flask import send_from_directory, abort
 
 app.config['CLIENT_IMAGES'] = '/home/muchirinjeri/app/app/static/client/img'
+app.config['CLIENT_CSV'] = '/home/muchirinjeri/app/app/static/client/csv'
+app.config['CLIENT_REPORTS'] = '/home/muchirinjeri/app/app/static/client/reports'
+
 
 @app.route('/get-image/<image_name>')
 def get_image(image_name):
     
     try:
         return send_from_directory(app.config['CLIENT_IMAGES'], path=image_name, as_attachment=False)
+        
+    except FileNotFoundError:
+        abort(404)
+        
+@app.route('/get-csv/<filename>')
+def get_csv(filename):
+    
+    try:
+        return send_from_directory(app.config['CLIENT_CSV'], path=filename, as_attachment=True)
+        
+    except FileNotFoundError:
+        abort(404)
+
+@app.route('/get-report/<filename>')
+def get_reports(filename):
+    
+    try:
+        return send_from_directory(app.config['CLIENT_REPORTS'], path=filename, as_attachment=True)
         
     except FileNotFoundError:
         abort(404)
