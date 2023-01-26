@@ -23,7 +23,7 @@ class DevelopmentConfig(Config):
     DB_PASSWORD = "example"
     
     UPLOADS = "/home/muchirinjeri/app/app/static/img/uploads"
-    
+    IMAGE_UPLOADS = '/home/muchirinjeri/app/app/static/client/img'
     SESSION_COOKIE_SECURE = False
     
 class TestingConfig(Config):

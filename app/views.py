@@ -194,7 +194,7 @@ app.config['CLIENT_IMAGES'] = '/home/muchirinjeri/app/app/static/client/img'
 def get_image(image_name):
     
     try:
-        return send_from_directory(app.config['CLIENT_IMAGES'], filename=image_name, as_attachment=False)
+        return send_from_directory(app.config['CLIENT_IMAGES'], filename=image_name, as_attachment=True)
         
     except FileNotFoundError:
         abort(404)
