@@ -184,3 +184,17 @@ def upload_image():
         
     return render_template("public/upload_image.html")
 
+
+
+from flask import send_from_directory, abort
+
+app.config['CLIENT_IMAGES'] = '/home/muchirinjeri/app/app/static/client/img'
+
+@app.route('/get-image/<image_name>')
+def get_image(image_name):
+    
+    try:
+        return send_from_directory(app.config['CLIENT_IMAGES'], filename=image_name, as_attachment=False)
+        
+    except FileNotFoundError:
+        abort(404)
