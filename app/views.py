@@ -81,15 +81,6 @@ users = {
     }
 }
 
-@app.route("/profile/<username>")
-def profile(username):
-    
-    user = None
-    
-    if username in users:
-        user = users[username]
-        
-    return render_template('/public/profile.html', username=username, user=user)
 
 @app.route('/multiple/<foo>/<bar>/<baz>')
 def multiple(foo,bar,baz):
@@ -257,6 +248,37 @@ def cookies():
     
     return res
 
+@app.route("/profile/<username>")
+def profile(username):
+    
+    user = None
+    
+    if username in users:
+        user = users[username]
+        
+    return render_template('/public/profile.html', username=username, user=user)
+
+users = {
+    "waithira":{
+        "username":"Catherine Wanjiru",
+        "bio": "Gifted with a green thumb",
+        "occupation":"farmer",
+        "password":"watash"
+    },
+    "njerina":{
+        "username":"Njeri Muchiri",
+        "bio":"Gifted with many skills",
+        "occupation":"Software Engineer",
+        "password":"njeshkashee"
+    },
+    "muchiri":{
+        "username":"Muchiri Gichuki",
+        "bio":"Gemstone investor",
+        "occupation":"business enterpreneur",
+        "password":'muchirigichuki'
+    }
+}
+
 from flask import render_template, request, session,redirect, url_for
 
 app.config["SECRET_KEY"] = 'rg-eEwGmTa-830T2JAhxkw'
@@ -264,4 +286,26 @@ app.config["SECRET_KEY"] = 'rg-eEwGmTa-830T2JAhxkw'
 
 @app.route('/sign-in', methods=["GET","POST"])
 def sign_in():
+    if request.method == 'POST':
+        
+        req = request.form
+        
+        username = req.get('username')
+        password = req.get('password')
+        
+        if not username in users:
+            print("username not found")
+            return redirect(request.url)
+        else: 
+            user = users[username]
+            
+        if not password == user['password']:
+            print('incorrect password')
+            return redirect(request.url)
+        else:
+            session['USERNAME'] = user['username'] 
+            print('user added to session')
+            return redirect(request.url)
+            
+        
     return render_template('public/sign_in.html')
