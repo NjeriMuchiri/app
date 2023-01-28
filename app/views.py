@@ -237,5 +237,22 @@ def get_document(document_name):
 def cookies():
     
     res = make_response('Cookies', 200)
-    res.set_cookie("chocolatechip","biscuit")
+    
+    cookies = request.cookies
+    Flavor = cookies.get('chocolatechip')
+    print(Flavor)
+    res.set_cookie(
+        "chocolatechip",
+        value = "biscuit",
+        max_age = 10,
+        expires=None,
+        path=request.path,
+        domain=None,
+        secure=False,
+        httponly=False,
+        samesite=None
+        )
+    res.set_cookie('egg','baking')
+    res.set_cookie('class','studyig')
+    
     return res
