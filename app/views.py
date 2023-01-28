@@ -231,3 +231,11 @@ def get_document(document_name):
         
     except FileNotFoundError:
         abort(404)
+        
+
+@app.route('/cookies')
+def cookies():
+    
+    res = make_response('Cookies', 200)
+    res.set_cookie("chocolatechip","biscuit")
+    return res
