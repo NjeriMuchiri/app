@@ -12,13 +12,9 @@
         <div class="card-body">
           <h4>{{ username | capitalize }}</h4>
           <hr>
-          {% if user %}
-          <p><strong>{{user["name"]}}</strong></p>
+          <p><strong>{{user["username"]}}</strong></p>
           <p class="text-muted">{{user["bio"] | title}}</p>
           <p><em>{{user["occupation"] | title}}</em></p>
-          {% else %}
-          <p>User not found</p>
-          {% endif %}
         </div>
       </div>
         </div>

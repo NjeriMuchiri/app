@@ -248,34 +248,34 @@ def cookies():
     
     return res
 
-@app.route("/profile/<username>")
-def profile(username):
+# @app.route("/profile/<username>")
+# def profile(username):
     
-    user = None
+#     user = None
     
-    if username in users:
-        user = users[username]
+#     if username in users:
+#         user = users[username]
         
-    return render_template('/public/profile.html', username=username, user=user)
+#     return render_template('/public/profile.html', username=username, user=user)
 
 users = {
     "waithira":{
-        "username":"Catherine Wanjiru",
+        "username":"waithira",
         "bio": "Gifted with a green thumb",
         "occupation":"farmer",
         "password":"watash"
     },
     "njerina":{
-        "username":"Njeri Muchiri",
+        "username":"Njerina",
         "bio":"Gifted with many skills",
         "occupation":"Software Engineer",
         "password":"njeshkashee"
     },
     "muchiri":{
-        "username":"Muchiri Gichuki",
+        "username":"muchiri",
         "bio":"Gemstone investor",
         "occupation":"business enterpreneur",
-        "password":'muchirigichuki'
+        "password":"muchirigichuki"
     }
 }
 
@@ -305,7 +305,21 @@ def sign_in():
         else:
             session['USERNAME'] = user['username'] 
             print('user added to session')
-            return redirect(request.url)
+            return redirect(url_for('profile'))
             
         
     return render_template('public/sign_in.html')
+
+
+
+@app.route('/profile')
+def profile():
+    
+    if session.get('USERNAME', None) is not None:
+        username = session.get('USERNAME')
+        user = users[username]
+        return render_template('public/profile.html', user=user)
+    else:
+        print("Username not found in session")
+        return redirect(url_for('sign_in'))
+   
