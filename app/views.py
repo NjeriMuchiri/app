@@ -256,3 +256,12 @@ def cookies():
     res.set_cookie('class','studyig')
     
     return res
+
+from flask import render_template, request, session,redirect, url_for
+
+app.config["SECRET_KEY"] = 'rg-eEwGmTa-830T2JAhxkw'
+
+
+@app.route('/sign-in', methods=["GET","POST"])
+def sign_in():
+    return render_template('public/sign_in.html')
