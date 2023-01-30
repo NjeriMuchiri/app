@@ -51,6 +51,18 @@ def jinja():
 def about_page():
     return render_template('public/about.html')
 
+
+@app.route("/profile/<username>")
+def profile(username):
+    
+    user = None
+    
+    if username in users:
+        user = users[username]
+        
+    return render_template('/public/profile.html', username=username, user=user)
+
+
 @app.route('/signup',methods=["GET","POST"])
 def signup_page():
     
@@ -248,16 +260,6 @@ def cookies():
     
     return res
 
-# @app.route("/profile/<username>")
-# def profile(username):
-    
-#     user = None
-    
-#     if username in users:
-#         user = users[username]
-        
-#     return render_template('/public/profile.html', username=username, user=user)
-
 users = {
     "waithira":{
         "username":"waithira",
@@ -266,7 +268,7 @@ users = {
         "password":"watash"
     },
     "njerina":{
-        "username":"Njerina",
+        "username":"njerina",
         "bio":"Gifted with many skills",
         "occupation":"Software Engineer",
         "password":"njeshkashee"
@@ -323,3 +325,11 @@ def profile():
         print("Username not found in session")
         return redirect(url_for('sign_in'))
    
+   
+@app.route('/sign-out')
+def sign_out():
+    
+    session.pop('USERNAME',None)
+    
+    return redirect(url_for('sign_in'))
+
